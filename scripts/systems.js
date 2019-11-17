@@ -63,17 +63,24 @@ function inputSystem(entityList)
 {
     for(let i = 0; i < entityList.length; ++i)
     {
-        if(entityList[i].contains(compType.CONTROLLABLE))
+        if(entityList[i].contains(compType.KEYBOARD_CONTROL))
         {
             let test = entityList[i].getComponent(compType.PHYSICS);
             if(keyPressed === "ArrowRight")
             {
                 test.speed = 5;
+                test.direction = new Vector2(1, 0);
             }
             else
             {
                 test.speed = 0;
             }
         }
+
+        if(entityList[i].contains(compType.POINT))
+        {
+
+        }
+
     }
 }

@@ -11,6 +11,12 @@ triangle.moveTo(-1, 0.5);
 triangle.lineTo(1, 0);
 triangle.lineTo(-1, -0.5);
 
+let square = new Path2D();
+square.moveTo(1, 1);
+square.lineTo(-1, 1);
+square.lineTo(-1, -1);
+square.lineTo(1, -1);
+
 let entityList = [];
 
 for(let i = 0; i < 100; ++i)
@@ -29,7 +35,7 @@ for(let i = 0; i < 100; ++i)
 let player = new Entity(entityList.length);
 player.addComponent(new PhysicsComp(new Vector2(1, 0), 0, 0));
 player.addComponent(new GeometryComp(new Vector2(50, 50), 30, triangle, 0));
-player.addComponent(new ControllableComp());
+player.addComponent(new PointAndClickComp(square));
 entityList.push(player);
 
 function main()

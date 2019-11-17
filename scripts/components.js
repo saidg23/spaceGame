@@ -1,4 +1,4 @@
-let compType = {PHYSICS: 0, GEOMETRY: 1, BOID: 2, CONTROLLABLE: 3};
+let compType = {PHYSICS: 0, GEOMETRY: 1, BOID: 2, KEYBOARD_CONTROL: 3, POINT_AND_CLICK: 4};
 
 function PhysicsComp(direction, speed = 0, acceleration)
 {
@@ -17,8 +17,16 @@ function GeometryComp(pos, size, shape, angle)
     this.shape = shape;
 }
 
-function ControllableComp()
+function KeyboardControlComp(isActive = true)
 {
-    this.type = compType.CONTROLLABLE;
-    this.active = true;
+    this.type = compType.KEYBOARD_CONTROL;
+    this.isActive = isActive;
+}
+
+function PointAndClickComp(shape, isActive = true)
+{
+    this.type = compType.POINT_AND_CLICK;
+    this.isActive = isActive;
+    this.isSelected = false;
+    this.shape = shape;
 }
