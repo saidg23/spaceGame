@@ -28,5 +28,6 @@ function PointAndClickComp(shape, isActive = true)
     this.type = compType.POINT_AND_CLICK;
     this.isActive = isActive;
     this.isSelected = false;
+    this.target = null;
     this.shape = shape;
 }

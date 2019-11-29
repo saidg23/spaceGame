@@ -65,21 +65,31 @@ function inputSystem(entityList)
     {
         if(entityList[i].contains(compType.KEYBOARD_CONTROL))
         {
-            let test = entityList[i].getComponent(compType.PHYSICS);
+            let physiscs = entityList[i].getComponent(compType.PHYSICS);
             if(keyPressed === "ArrowRight")
             {
-                test.speed = 5;
-                test.direction = new Vector2(1, 0);
+                physiscs.speed = 5;
+                physiscs.direction = new Vector2(1, 0);
             }
             else
             {
-                test.speed = 0;
+                physiscs.speed = 0;
             }
         }
 
-        if(entityList[i].contains(compType.POINT))
+        if(entityList[i].contains(compType.POINT_AND_CLICK))
         {
+            let pointAndClick = entityList[i].getComponent(compType.POINT_AND_CLICK);
 
+            if(pointAndClick.target !== null)
+            {
+                let physiscs = entityList[i].getComponent(compType.PHYSICS);
+                let geometry = entityList[i].getComponent(compList.GEOMETRY);
+                if(getVector2Proximity(geometry.pos, pointAndClick.target) > 0.5)
+                {
+                    physics.direction = subtractVector2(geometry.pos, pointAndClick.target).getNormal();
+                }
+            }
         }
 
     }

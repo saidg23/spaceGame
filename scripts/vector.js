@@ -46,3 +46,9 @@ function subtractVector2(a, b)
 {
     return new Vector2(a.x - b.x, a.y - b.y);
 }
+
+function getVector2Proximity(a, b)
+{
+    let difference = subtractVector2(a, b);
+    return difference.getMagnitude();
+}
