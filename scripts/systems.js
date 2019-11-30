@@ -83,12 +83,25 @@ function inputSystem(entityList)
 
             if(pointAndClick.target !== null)
             {
-                let physiscs = entityList[i].getComponent(compType.PHYSICS);
-                let geometry = entityList[i].getComponent(compList.GEOMETRY);
-                if(getVector2Proximity(geometry.pos, pointAndClick.target) > 0.5)
+                let physics = entityList[i].getComponent(compType.PHYSICS);
+                let geometry = entityList[i].getComponent(compType.GEOMETRY);
+                if(getVector2Proximity(geometry.pos, pointAndClick.target) <= 5)
                 {
-                    physics.direction = subtractVector2(geometry.pos, pointAndClick.target).getNormal();
+                    physics.speed = 0;
+                    pointAndClick.target = null;
+                    pointAndClick.isActive = false;
                 }
+                else if(!pointAndClick.isActive)
+                {
+                    physics.direction = subtractVector2(pointAndClick.target, geometry.pos).getNormal();
+                    physics.speed = 3;
+                    pointAndClick.isActive = true;
+                }
+            }
+            if(mouseEvent.buttons !== 0)
+            {
+                pointAndClick.target = new Vector2(mouseEvent.offsetX, mouseEvent.offsetY);
+                pointAndClick.isActive = false;
             }
         }
 

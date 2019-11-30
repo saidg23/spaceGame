@@ -23,7 +23,7 @@ function KeyboardControlComp(isActive = true)
     this.isActive = isActive;
 }
 
-function PointAndClickComp(shape, isActive = true)
+function PointAndClickComp(shape, isActive = false)
 {
     this.type = compType.POINT_AND_CLICK;
     this.isActive = isActive;

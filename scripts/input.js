@@ -1,9 +1,10 @@
 let keyPressed = "none";
-let mouseEvent = null;
+let mouseEvent = new MouseEvent("mousedown");
 
 window.addEventListener("keydown", keyPress);
 window.addEventListener("keyup", keyRelease);
-window.addEventListener("click", mouseClick);
+window.addEventListener("mousedown", mouseDown);
+window.addEventListener("mouseup", mouseUp);
 
 function keyPress(e)
 {
@@ -17,7 +18,12 @@ function keyRelease(e)
     window.addEventListener("keydown", keyPress);
 }
 
-function mouseClick(e)
+function mouseDown(e)
+{
+    mouseEvent = e;
+}
+
+function mouseUp(e)
 {
     mouseEvent = e;
 }
